@@ -283,6 +283,8 @@
 </div>
 
 <script>
+ const noMoveSound = new
+  Audio("nomove.mp3");
 const SIZE = 4;
 let board = [];
 let score = 0;
@@ -401,6 +403,7 @@ function moveLeft() {
       board[r][c] = row[c];
     }
   }
+ 
 
   return moved;
 }
@@ -428,6 +431,16 @@ function move(direction) {
     addRandomTile();
     updateScore();
     render();
+  }
+ if (!moved) {
+    noMoveSound.currentTime = 0;
+    noMoveSound.play();
+}
+   
+   if (!moved) {
+    noMoveSound.currentTime = 0;
+    noMoveSound.play();
+}
 
     if (isGameOver()) {
       setTimeout(() => gameOverEl.classList.add('show'), 250);
